@@ -1,0 +1,48 @@
+def partition(lst, fn):
+    """Partition lst by predicate.
+     
+     - lst: list of items
+     - fn: function that returns True or False
+     
+     Returns new list: [a, b], where `a` are items that passed fn test,
+     and `b` are items that failed fn test.
+
+        >>> def is_even(num):
+        ...     return num % 2 == 0
+        
+        >>> def is_string(el):
+        ...     return isinstance(el, str)
+        
+        >>> partition([1, 2, 3, 4], is_even)
+        [[2, 4], [1, 3]]
+        
+        >>> partition(["hi", None, 6, "bye"], is_string)
+        [['hi', 'bye'], [None, 6]]
+    """
+    true_list = []
+    false_list = []
+    for item in lst:
+        if fn(item):
+            true_list.append(item)
+        else:
+            false_list.append(item)
+    
+    # print([true_list, false_list])
+    return [true_list, false_list]
+
+
+# Some More Tests
+# def is_even(num):
+#     return num % 2 == 0
+
+# print(partition([8,5,11,13,18], is_even))
+
+# def is_string(el):
+#     return isinstance(el, str)
+
+# print(partition(['False', 3, None, 'start', True], is_string))
+
+# def is_number(num):
+#     return isinstance(num, int) or isinstance(num, float)
+
+# print(partition([3, 5.5, '11', 14.2, 7, '6', 'hi'], is_number))
